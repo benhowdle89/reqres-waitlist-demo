@@ -134,6 +134,7 @@ export default function AdminDashboard({ user, onLogout }: Props) {
         <WaitlistTable
           records={records}
           loading={loading}
+          startIndex={startIndex}
           onInvite={handleInvite}
           onDelete={handleDelete}
         />

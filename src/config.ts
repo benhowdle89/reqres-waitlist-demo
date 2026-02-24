@@ -4,6 +4,7 @@ export type AppConfig = {
   publicProjectKey: string
   manageProjectKey: string
   collectionSlug: string
+  environment: string
 }
 
 const sanitizeBaseUrl = (value?: string) => {
@@ -26,4 +27,19 @@ export const config: AppConfig = {
   manageProjectKey: (import.meta.env.VITE_REQRES_MANAGE_KEY || '').trim(),
   collectionSlug:
     (import.meta.env.VITE_REQRES_COLLECTION_SLUG || 'waitlist').trim(),
+  environment:
+    (import.meta.env.VITE_REQRES_ENV || 'prod').trim(),
+}
+
+// Validate required config on startup so missing env vars surface immediately
+const missing: string[] = []
+if (!config.projectId) missing.push('VITE_REQRES_PROJECT_ID')
+if (!config.manageProjectKey) missing.push('VITE_REQRES_MANAGE_KEY')
+if (!config.publicProjectKey) missing.push('VITE_REQRES_PUBLIC_KEY')
+
+if (missing.length > 0) {
+  console.error(
+    `[ReqRes] Missing required environment variables: ${missing.join(', ')}\n` +
+    `Copy .env.example to .env and add your keys from https://app.reqres.in → Settings → API Keys`
+  )
 }

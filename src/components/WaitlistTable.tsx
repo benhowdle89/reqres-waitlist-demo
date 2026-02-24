@@ -3,6 +3,7 @@ import { WaitlistRecord, WaitlistStatus } from '../types'
 type Props = {
   records: WaitlistRecord[]
   loading: boolean
+  startIndex: number
   onInvite: (id: string) => void
   onDelete: (id: string) => void
 }
@@ -39,7 +40,7 @@ function SkeletonRows() {
   )
 }
 
-export default function WaitlistTable({ records, loading, onInvite, onDelete }: Props) {
+export default function WaitlistTable({ records, loading, startIndex, onInvite, onDelete }: Props) {
   return (
     <div className="overflow-x-auto rounded-lg border border-slate-700">
       <table className="w-full text-left">
@@ -66,7 +67,7 @@ export default function WaitlistTable({ records, loading, onInvite, onDelete }: 
           ) : (
             records.map((record, index) => (
               <tr key={record.id} className="hover:bg-slate-800/30 transition-colors">
-                <td className="px-4 py-3 text-sm text-slate-500">{index + 1}</td>
+                <td className="px-4 py-3 text-sm text-slate-500">{startIndex + index}</td>
                 <td className="px-4 py-3 text-sm">
                   {record.data.name || <span className="text-slate-600">-</span>}
                 </td>

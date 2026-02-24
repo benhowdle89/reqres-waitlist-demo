@@ -57,6 +57,13 @@ export function useAuth(): AuthState {
       return
     }
 
+    // Check if token has expired before making an API call
+    if (stored.expiresAt && new Date(stored.expiresAt) <= new Date()) {
+      clearSession()
+      setLoading(false)
+      return
+    }
+
     getCurrentUser(config, stored.token)
       .then((profile) => {
         setSession(stored)

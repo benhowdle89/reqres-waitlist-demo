@@ -41,7 +41,7 @@ async function jsonRequest<T>(
 
   const headers: Record<string, string> = {
     Accept: 'application/json',
-    'x-reqres-env': 'prod',
+    'x-reqres-env': config.environment,
     ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
     ...(init.headers as Record<string, string> | undefined),
   }
@@ -103,7 +103,7 @@ export function friendlyError(err: unknown): string {
     case 429:
       return 'Too many attempts. Please try again in a moment.'
     case 403:
-      return 'Waitlist is currently full. Check back soon!'
+      return 'Access denied. Check that your API keys are correct.'
     case 401:
       return 'Invalid or expired code. Please try again.'
     default:

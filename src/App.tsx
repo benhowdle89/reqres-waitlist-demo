@@ -27,6 +27,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <BuiltWithBanner />
       <div className="flex-1">
         {view === 'landing' && <LandingPage />}
         {view === 'admin' && !ADMIN_ENABLED && (
@@ -63,7 +64,6 @@ export default function App() {
           />
         )}
       </div>
-      <BuiltWithBanner />
     </div>
   )
 }
