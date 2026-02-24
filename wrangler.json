@@ -1,7 +1,9 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "reqres-waitlist-demo",
-  "pages": {
-    "build_command": "npm run build",
-    "build_output_dir": "dist"
+  "compatibility_date": "2026-02-24",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
   }
 }

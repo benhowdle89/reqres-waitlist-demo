@@ -33,7 +33,7 @@ export default function BuiltWithBanner() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com/reqres-api/waitlist-demo"
+            href="https://github.com/benhowdle89/reqres-waitlist-demo"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-400 hover:text-white transition-colors hidden sm:inline"
