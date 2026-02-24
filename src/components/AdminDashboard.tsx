@@ -20,6 +20,7 @@ export default function AdminDashboard({ user, onLogout }: Props) {
   const {
     records,
     meta,
+    statusCounts,
     loading,
     error,
     params,
@@ -70,7 +71,7 @@ export default function AdminDashboard({ user, onLogout }: Props) {
               onClick={onLogout}
               className="px-3 py-1.5 text-sm text-slate-400 hover:text-white border border-slate-700 rounded-md hover:border-slate-600 transition-colors"
             >
-              Log out
+              Log Out
             </button>
           </div>
         </div>
@@ -78,7 +79,7 @@ export default function AdminDashboard({ user, onLogout }: Props) {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         {/* Stats */}
-        <StatsBar records={records} total={meta.total} />
+        <StatsBar total={meta.total} statusCounts={statusCounts} />
 
         {/* Controls */}
         <div className="flex flex-col sm:flex-row gap-4 mb-4">

@@ -76,7 +76,7 @@ export default function WaitlistTable({ records, loading, onInvite, onDelete }: 
                 </td>
                 <td className="px-4 py-3">
                   <span
-                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${STATUS_STYLES[record.data.status]}`}
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border capitalize ${STATUS_STYLES[record.data.status]}`}
                     role="status"
                     aria-label={`Status: ${record.data.status}`}
                   >
@@ -98,7 +98,7 @@ export default function WaitlistTable({ records, loading, onInvite, onDelete }: 
                     )}
                     <button
                       onClick={() => onDelete(record.id)}
-                      className="px-3 py-1.5 text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20 rounded-md hover:bg-red-500/20 transition-colors"
+                      className="px-3 py-1.5 text-xs font-medium text-slate-400 border border-slate-700 rounded-md hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-colors"
                     >
                       Delete
                     </button>

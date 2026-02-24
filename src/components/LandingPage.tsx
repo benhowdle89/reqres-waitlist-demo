@@ -123,12 +123,21 @@ export default function LandingPage() {
 
         {/* Admin link */}
         <div className="mt-16">
-          <a
-            href="#/admin"
-            className="text-sm text-slate-600 hover:text-slate-400 transition-colors"
-          >
-            Admin
-          </a>
+          {import.meta.env.VITE_ADMIN_ENABLED !== 'false' ? (
+            <a
+              href="#/admin"
+              className="text-sm text-slate-600 hover:text-slate-400 transition-colors"
+            >
+              Admin
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-2 text-sm text-slate-600">
+              Admin
+              <span className="px-1.5 py-0.5 text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20 rounded">
+                Disabled for demo
+              </span>
+            </span>
+          )}
         </div>
       </div>
     </div>

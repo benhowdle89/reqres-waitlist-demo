@@ -13,9 +13,12 @@ import {
   friendlyError,
 } from '../api'
 
+export type StatusCounts = { waiting: number; invited: number; joined: number }
+
 type UseWaitlistReturn = {
   records: WaitlistRecord[]
   meta: PaginationMeta
+  statusCounts: StatusCounts
   loading: boolean
   error: string | null
   params: ListParams
@@ -28,10 +31,12 @@ type UseWaitlistReturn = {
 }
 
 const defaultMeta: PaginationMeta = { page: 1, limit: 20, total: 0, pages: 1 }
+const defaultCounts: StatusCounts = { waiting: 0, invited: 0, joined: 0 }
 
 export function useWaitlist(): UseWaitlistReturn {
   const [records, setRecords] = useState<WaitlistRecord[]>([])
   const [meta, setMeta] = useState<PaginationMeta>(defaultMeta)
+  const [statusCounts, setStatusCounts] = useState<StatusCounts>(defaultCounts)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [params, setParams] = useState<ListParams>({
@@ -39,6 +44,19 @@ export function useWaitlist(): UseWaitlistReturn {
     limit: 20,
     order: 'desc',
   })
+
+  const fetchStatusCounts = useCallback(async () => {
+    try {
+      const [waiting, invited, joined] = await Promise.all(
+        (['waiting', 'invited', 'joined'] as WaitlistStatus[]).map((status) =>
+          listSignups(config, { limit: 1, status }).then((r) => r.meta.total),
+        ),
+      )
+      setStatusCounts({ waiting, invited, joined })
+    } catch {
+      // Non-critical — leave counts at current values
+    }
+  }, [])
 
   const fetchData = useCallback(async () => {
     setLoading(true)
@@ -52,7 +70,8 @@ export function useWaitlist(): UseWaitlistReturn {
     } finally {
       setLoading(false)
     }
-  }, [params])
+    fetchStatusCounts()
+  }, [params, fetchStatusCounts])
 
   useEffect(() => {
     fetchData()
@@ -108,6 +127,7 @@ export function useWaitlist(): UseWaitlistReturn {
   return {
     records,
     meta,
+    statusCounts,
     loading,
     error,
     params,
