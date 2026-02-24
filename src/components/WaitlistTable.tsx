@@ -68,11 +68,11 @@ export default function WaitlistTable({ records, loading, onInvite, onDelete }: 
               <tr key={record.id} className="hover:bg-slate-800/30 transition-colors">
                 <td className="px-4 py-3 text-sm text-slate-500">{index + 1}</td>
                 <td className="px-4 py-3 text-sm">
-                  {record.data.name || <span className="text-slate-600">—</span>}
+                  {record.data.name || <span className="text-slate-600">-</span>}
                 </td>
                 <td className="px-4 py-3 text-sm font-mono text-slate-300">{record.data.email}</td>
                 <td className="px-4 py-3 text-sm text-slate-400">
-                  {record.data.referral_source || <span className="text-slate-600">—</span>}
+                  {record.data.referral_source || <span className="text-slate-600">-</span>}
                 </td>
                 <td className="px-4 py-3">
                   <span

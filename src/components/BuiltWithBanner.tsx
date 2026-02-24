@@ -24,7 +24,7 @@ export default function BuiltWithBanner() {
         <div className="flex items-center gap-3 text-sm">
           <span className="font-semibold text-brand-400">ReqRes</span>
           <span className="text-slate-400 hidden sm:inline">
-            Built entirely on ReqRes — zero backend code
+            Built entirely on ReqRes - zero backend code
           </span>
           <span className="text-slate-400 sm:hidden">
             Zero backend code

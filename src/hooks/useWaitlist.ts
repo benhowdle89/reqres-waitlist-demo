@@ -54,7 +54,7 @@ export function useWaitlist(): UseWaitlistReturn {
       )
       setStatusCounts({ waiting, invited, joined })
     } catch {
-      // Non-critical — leave counts at current values
+      // Non-critical - leave counts at current values
     }
   }, [])
 

@@ -1,4 +1,4 @@
-# Waitlist App — Built with ReqRes
+# Waitlist App - Built with ReqRes
 
 A complete waitlist application with public signup, admin dashboard, and magic-code authentication.
 **Zero backend code. No server. No database setup. No deployment pipeline.**
@@ -28,7 +28,7 @@ A complete waitlist application with public signup, admin dashboard, and magic-c
 4. Copy `.env.example` to `.env` and add your keys
 5. `npm install && npm run dev`
 
-Or skip steps 2–3: use the ReqRes AI generator and type "a waitlist app" — it'll create the project and collection for you.
+Or skip steps 2–3: use the ReqRes AI generator and type "a waitlist app" - it'll create the project and collection for you.
 
 ## Collection Schema
 
@@ -65,9 +65,9 @@ Browser → ReqRes API → Postgres
      No middle layer
 ```
 
-- **Public signup** — uses the project API key (`pro_`) to create records directly
-- **Admin auth** — magic code flow via App Users (`pub_` for login, `pro_` for verify)
-- **Admin dashboard** — uses the project API key (`pro_`) for full record management
+- **Public signup** - uses the project API key (`pro_`) to create records directly
+- **Admin auth** - magic code flow via App Users (`pub_` for login, `pro_` for verify)
+- **Admin dashboard** - uses the project API key (`pro_`) for full record management
 
 > **Note:** In production, you'd proxy the API key through a Cloudflare Pages Function to keep it server-side. For this demo, the key is used directly from the browser.
 
@@ -90,6 +90,6 @@ You just got real-time signup notifications without writing a webhook handler.
 
 ## Built with ReqRes
 
-This app runs on [ReqRes](https://reqres.in) — a backend-as-a-service that gives you a database, API, auth, and environments in one platform. No backend code required.
+This app runs on [ReqRes](https://reqres.in) - a backend-as-a-service that gives you a database, API, auth, and environments in one platform. No backend code required.
 
 **[Get your own backend →](https://reqres.in)**
