@@ -14,7 +14,7 @@ export default function BuiltWithBanner() {
           ReqRes
         </a>
         <span className="text-white/70 hidden sm:inline">
-          — zero backend code, no database setup
+          - zero backend code, no database setup
         </span>
         <span className="text-white/50 mx-1.5 hidden sm:inline">|</span>
         <a
