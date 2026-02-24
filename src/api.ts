@@ -121,25 +121,14 @@ export async function checkExistingSignup(
   config: AppConfig,
   email: string,
 ): Promise<WaitlistRecord | null> {
-  const slug = encodeURIComponent(config.collectionSlug)
-  // Try data_contains first, fall back to search if it returns empty
   const encoded = encodeURIComponent(JSON.stringify({ email }))
+  const slug = encodeURIComponent(config.collectionSlug)
   const res = await jsonRequest<{ data: WaitlistRecord[] }>(
     config,
     `/api/collections/${slug}/records?data_contains=${encoded}`,
     { method: 'GET', require: 'manage' },
   )
-  if (res.data?.length) return res.data[0]
-
-  // Fallback: use search parameter to find by email
-  const searchRes = await jsonRequest<{ data: WaitlistRecord[] }>(
-    config,
-    `/api/collections/${slug}/records?search=${encodeURIComponent(email)}`,
-    { method: 'GET', require: 'manage' },
-  )
-  // Verify exact email match from search results
-  const match = searchRes.data?.find((r) => r.data?.email === email)
-  return match ?? null
+  return res.data?.length ? res.data[0] : null
 }
 
 /**
