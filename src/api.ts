@@ -65,7 +65,7 @@ async function jsonRequest<T>(
     headers['x-api-key'] = config.manageProjectKey
   }
 
-  const requestInit: RequestInit = { ...init, headers }
+  const requestInit: RequestInit = { ...init, headers, cache: 'no-store' }
   if (body !== undefined && body !== null) {
     requestInit.body = typeof body === 'string' ? body : JSON.stringify(body)
   }
